@@ -1,11 +1,10 @@
 import os
+from models.article_comment_onetomany import Base
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from models.article_comment_onetomany import Article, Comment
 from sqlalchemy.orm import sessionmaker
-
-from models.article_comment_onetomany import Base
 
 load_dotenv()
 
@@ -15,8 +14,9 @@ DB_PASS = os.getenv("DB_PASS", "postgres")
 print(f"DB_USER: {DB_USER}, DB_PASS: {DB_PASS}")
 
 
-SQLALCHEMY_DATABASE_URL = 'sqlite:///./test.db'
-# SQLALCHEMY_DATABASE_URL = f'postgresql://{DB_USER}:{DB_PASS}@localhost/fastapi_week4'
+# SQLALCHEMY_DATABASE_URL = 'sqlite:///./test.db'
+# setting postgresql as database
+SQLALCHEMY_DATABASE_URL = f'postgresql://{DB_USER}:{DB_PASS}@localhost/fastapi_week4'
 
 # Create the SQLAlchemy engine
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
